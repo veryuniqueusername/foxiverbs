@@ -1,5 +1,5 @@
 import path from 'path';
-import { Configuration, DefinePlugin } from 'webpack';
+import { DefinePlugin } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
@@ -30,7 +30,7 @@ module.exports = {
 			},
 			{
 				test: /\.s?css$/,
-				use: ['style-loader', 'css-loader'],
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 		],
 	},
