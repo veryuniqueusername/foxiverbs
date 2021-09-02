@@ -1353,6 +1353,11 @@ encodeurl@~1.0.2:
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
   integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
 
+english-verbs-irregular@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/english-verbs-irregular/-/english-verbs-irregular-2.0.1.tgz#d2b0beecb9141e6316c145c422180e25019c8c3f"
+  integrity sha512-wmZeVhUnV7qR5XxoDipsfvS1mW9pe4TglNFTL2SJgi2pmsUvn4+11GHHGdYDbnjR7mHFBJQfmJ/zFTl3c+LUOg==
+
 enhanced-resolve@^5.0.0, enhanced-resolve@^5.7.0, enhanced-resolve@^5.8.0:
   version "5.8.2"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.8.2.tgz#15ddc779345cbb73e97c611cd00c01c1e7bf4d8b"

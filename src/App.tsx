@@ -6,12 +6,23 @@ import Choose from './Choose';
 export default function App() {
 	return (
 		<Router>
-			<Sidebar />
-			<Switch>
-				<Route path="/">
-					<Choose />
-				</Route>
-			</Switch>
+			<div className="wrapper">
+				<Sidebar />
+				<Switch>
+					<Route path="/">
+						<Choose />
+					</Route>
+					<Route path="/learn">
+						<Choose />
+					</Route>
+					<Route path="/drag">
+						<Choose />
+					</Route>
+					<Route path="/write">
+						<Choose />
+					</Route>
+				</Switch>
+			</div>
 		</Router>
 	);
 }

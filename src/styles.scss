@@ -5,9 +5,30 @@ body {
 	background-color: #fcf8f3;
 }
 
-ul.sidebar {
-	position: -webkit-sticky;
+.Table {
+	font-size: 20px;
+	font-family: Lato;
+	border-collapse: collapse;
+	height: max-content;
+	flex-grow: 1;
+	& thead {
+		text-align: left;
+		height: 2em;
+		background-color: #0c0c0c18;
+	}
+	& tr {
+		height: 1em;
+		border-bottom: 1px solid black;
+	}
+}
+
+.wrapper {
+	display: flex;
+}
+
+ul.Sidebar {
 	position: sticky;
+	top: 0;
 	list-style: none;
 	font-family: Lato;
 	font-size: 24px;

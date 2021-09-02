@@ -2,7 +2,7 @@ import { NavLink as Link } from 'react-router-dom';
 
 export default function Sidebar() {
 	return (
-		<ul className="sidebar">
+		<ul className="Sidebar">
 			<Link to="/choose">
 				<div className="number">
 					<p>1</p>
