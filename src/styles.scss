@@ -2,23 +2,26 @@
 
 body {
 	margin: 0;
-	background-color: #fcf8f3;
 }
 
-.Table {
+table.Table {
 	font-size: 20px;
 	font-family: Lato;
 	border-collapse: collapse;
 	height: max-content;
 	flex-grow: 1;
-	& thead {
+	& > thead {
 		text-align: left;
 		height: 2em;
 		background-color: #0c0c0c18;
+		border-bottom: 1px solid #aaaaaa;
 	}
-	& tr {
+	& > tbody > tr {
 		height: 1em;
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid #aaaaaa77;
+		& > td.tableNumber {
+			color: #aaaaaaaa;
+		}
 	}
 }
 
