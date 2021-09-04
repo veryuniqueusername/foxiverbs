@@ -6,6 +6,7 @@ import Choose from './Choose';
 export default function App() {
 	return (
 		<Router>
+			{/* FLEX WRAPPER */}
 			<div className="wrapper">
 				<Sidebar />
 				<Switch>

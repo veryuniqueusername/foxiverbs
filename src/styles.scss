@@ -19,6 +19,14 @@ table.Table {
 	& > tbody > tr {
 		height: 1em;
 		border-bottom: 1px solid #aaaaaa77;
+		color: #333;
+		&.selected {
+			background-color: #ffd95c;
+			color: black;
+			& > td.tableNumber {
+				color: #999999;
+			}
+		}
 		& > td.tableNumber {
 			color: #aaaaaaaa;
 		}

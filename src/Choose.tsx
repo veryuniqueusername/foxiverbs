@@ -1,8 +1,26 @@
+import { useState } from 'react';
 import { verbList, getVariant } from './verbGetter';
 
-function click(e) {
-	e.preventDefault();
-	e.currentTarget;
+function TableRow({ i, verb }: { i: number; verb: string }) {
+	const [selected, setSelected] = useState(false);
+
+	function click() {
+		if (!selected) {
+			setSelected(true);
+		} else {
+			setSelected(false);
+		}
+	}
+
+	return (
+		<tr onClick={click} className={selected ? 'selected' : null}>
+			<td className={`tableNumber`}>{i + 1}</td>
+			<td>{verb}</td>
+			<td>{getVariant(verb, 'SP')}</td>
+			<td>{getVariant(verb, 'PP')}</td>
+			<td>{getVariant(verb, 'SWE')}</td>
+		</tr>
+	);
 }
 
 export default function Choose() {
@@ -10,15 +28,7 @@ export default function Choose() {
 
 	for (let i = 0; i < verbList.length; i++) {
 		const inf = verbList[i];
-		table.push(
-			<tr key={i} onClick={click}>
-				<td className="tableNumber">{i + 1}</td>
-				<td>{inf}</td>
-				<td>{getVariant(inf, 'SP')}</td>
-				<td>{getVariant(inf, 'PP')}</td>
-				<td>{getVariant(inf, 'SWE')}</td>
-			</tr>
-		);
+		table.push(<TableRow key={i} i={i} verb={inf} />);
 	}
 
 	return (
