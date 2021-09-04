@@ -1,19 +1,29 @@
 import { useState } from 'react';
 import { verbList, getVariant } from './verbGetter';
+import { setSelected, getSelected } from './storage';
+import speak from './speechSynthesis';
+
+// TODO: SELECT/DESELECT ALL
 
 function TableRow({ i, verb }: { i: number; verb: string }) {
-	const [selected, setSelected] = useState(false);
+	const storedValue = getSelected(verb);
+	const [selectedState, setSelectedState] = useState(storedValue);
 
 	function click() {
-		if (!selected) {
-			setSelected(true);
+		if (!selectedState) {
+			setSelectedState(true);
+			setSelected(verb, true);
 		} else {
-			setSelected(false);
+			setSelectedState(false);
+			setSelected(verb, false);
 		}
 	}
 
 	return (
-		<tr onClick={click} className={selected ? 'selected' : null}>
+		<tr onClick={click} className={selectedState ? 'selected' : null}>
+			<td className="speaker" onClick={() => speak(verb)}>
+				s
+			</td>
 			<td className={`tableNumber`}>{i + 1}</td>
 			<td>{verb}</td>
 			<td>{getVariant(verb, 'SP')}</td>
@@ -31,10 +41,13 @@ export default function Choose() {
 		table.push(<TableRow key={i} i={i} verb={inf} />);
 	}
 
+	speak('');
+
 	return (
 		<table className="Table">
 			<thead>
 				<tr>
+					<th />
 					<th />
 					<th>Infinitive</th>
 					<th>Simple Past</th>

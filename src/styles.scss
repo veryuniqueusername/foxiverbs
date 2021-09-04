@@ -20,6 +20,9 @@ table.Table {
 		height: 1em;
 		border-bottom: 1px solid #aaaaaa77;
 		color: #333;
+		&:hover {
+			cursor: pointer;
+		}
 		&.selected {
 			background-color: #ffd95c;
 			color: black;
