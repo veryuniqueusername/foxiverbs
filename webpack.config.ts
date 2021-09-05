@@ -21,16 +21,6 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
-				exclude: /(node_modules|bower_components)/,
-				options: {
-					presets: ['react'],
-				},
-				use: {
-					loader: 'babel-loader',
-				},
-			},
-			{
 				test: /\.tsx?$/,
 				loader: 'ts-loader',
 				options: {
