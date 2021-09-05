@@ -11,7 +11,7 @@ module.exports = {
 		: { devtool: 'eval-source-map' }),
 
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js'],
+		extensions: ['.ts', '.tsx', '.js', 'jsx'],
 		plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
 	},
 	output: {
@@ -20,6 +20,16 @@ module.exports = {
 	},
 	module: {
 		rules: [
+			{
+				test: /\.jsx?$/,
+				exclude: /(node_modules|bower_components)/,
+				options: {
+					presets: ['react'],
+				},
+				use: {
+					loader: 'babel-loader',
+				},
+			},
 			{
 				test: /\.tsx?$/,
 				loader: 'ts-loader',
