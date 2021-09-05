@@ -39,10 +39,10 @@ function TableRow({
 				<BsFillVolumeUpFill />
 			</td>
 			<td className={`tableNumber`}>{i + 1}</td>
+			<td>{getVariant(verb, 'SWE')}</td>
 			<td>{verb}</td>
 			<td>{getVariant(verb, 'SP')}</td>
 			<td>{getVariant(verb, 'PP')}</td>
-			<td>{getVariant(verb, 'SWE')}</td>
 		</tr>
 	);
 }
@@ -63,7 +63,7 @@ export default function Choose() {
 	}
 
 	function handleClick(i: number, boolean: boolean) {
-		const newStates = states;
+		const newStates = [...states];
 		newStates[i] = boolean;
 		setStates(newStates);
 	}
@@ -86,18 +86,22 @@ export default function Choose() {
 		<div className="TableWrapper">
 			<div className="Header">
 				<p>Välj de verb som du vill lära in.</p>
-				<button onClick={selectAll}>Markera alla</button>
-				<button onClick={deselectAll}>Avmarkera alla</button>
+				<button onClick={selectAll} className="choose">
+					Markera alla
+				</button>
+				<button onClick={deselectAll} className="choose">
+					Avmarkera alla
+				</button>
 			</div>
-			<table className="Table">
+			<table className="ChoosingTable">
 				<thead>
 					<tr>
 						<th />
 						<th />
+						<th>Svenska</th>
 						<th>Infinitive</th>
 						<th>Simple Past</th>
 						<th>Past Participle</th>
-						<th>Svenska</th>
 					</tr>
 				</thead>
 				<tbody>{table}</tbody>
