@@ -15,32 +15,40 @@ export function getSelected(verb: string): boolean {
 	return booleanValue;
 }
 
-export function loadArray(selectedOnly?: boolean): string[] | boolean[] {
-	switch (selectedOnly) {
-		case true:
-			const selected: string[] = [];
-			for (let i = 0; i < verbList.length; i++) {
-				const verb = verbList[i];
-				if (getSelected(verb) === true) {
-					selected.push(verb);
-				}
+export function loadArray(selectedOnly: boolean): string[] {
+	if (selectedOnly) {
+		const selected: string[] = [];
+		for (let i = 0; i < verbList.length; i++) {
+			const verb = verbList[i];
+			if (getSelected(verb) === true) {
+				selected.push(verb);
 			}
-			return selected;
-		case false:
-			const notSelected: string[] = [];
-			for (let i = 0; i < verbList.length; i++) {
-				const verb = verbList[i];
-				if (getSelected(verb) === false) {
-					notSelected.push(verb);
-				}
+		}
+		return selected;
+	} else {
+		const notSelected: string[] = [];
+		for (let i = 0; i < verbList.length; i++) {
+			const verb = verbList[i];
+			if (getSelected(verb) === false) {
+				notSelected.push(verb);
 			}
-			return notSelected;
-		default:
-			const booleans: boolean[] = [];
-			for (let i = 0; i < verbList.length; i++) {
-				const verb = verbList[i];
-				booleans.push(getSelected(verb));
-			}
-			return booleans;
+		}
+		return notSelected;
+	}
+}
+
+export function loadBooleans(): boolean[] {
+	const booleans: boolean[] = [];
+	for (let i = 0; i < verbList.length; i++) {
+		const verb = verbList[i];
+		booleans.push(getSelected(verb));
+	}
+	return booleans;
+}
+
+export function saveArray(arr: boolean[]): void {
+	for (let i = 0; i < verbList.length; i++) {
+		const verb = verbList[i];
+		setSelected(verb, arr[i]);
 	}
 }

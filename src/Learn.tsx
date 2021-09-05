@@ -4,8 +4,6 @@ import { loadArray } from './storage';
 export default function Learn() {
 	const selectedVerbs = loadArray(true);
 
-	speak('');
-
 	return (
 		<div>
 			{selectedVerbs}

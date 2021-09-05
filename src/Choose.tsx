@@ -1,27 +1,34 @@
 import { BsFillVolumeUpFill } from 'react-icons/bs';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { verbList, getVariant } from './verbGetter';
-import { setSelected, getSelected } from './storage';
+import { setSelected, saveArray, loadBooleans } from './storage';
 import speak from './speechSynthesis';
 
-// TODO: SELECT/DESELECT ALL
+function TableRow({
+	i,
+	verb,
+	handleClick,
+	selected,
+}: {
+	i: number;
+	verb: string;
+	handleClick: (i: number, boolean: boolean) => void;
+	selected: boolean;
+}) {
+	const [selectedState, setSelectedState] = useState(selected);
 
-function TableRow({ i, verb }: { i: number; verb: string }) {
-	const storedValue = getSelected(verb);
-	const [selectedState, setSelectedState] = useState(storedValue);
+	useEffect(() => {
+		setSelectedState(selected);
+	}, [selected]);
 
-	function click(e) {
-		const target = e.target;
-		console.log(target);
-		if (target.className === 'speaker' || target !== HTMLTableElement) {
-			console.log('yes');
-			return;
-		}
+	function click() {
 		if (!selectedState) {
 			setSelectedState(true);
+			handleClick(i, true);
 			setSelected(verb, true);
 		} else {
 			setSelectedState(false);
+			handleClick(i, false);
 			setSelected(verb, false);
 		}
 	}
@@ -41,21 +48,46 @@ function TableRow({ i, verb }: { i: number; verb: string }) {
 }
 
 export default function Choose() {
-	const table = [];
+	const loaded = loadBooleans();
+	const [states, setStates] = useState(loaded);
 
-	for (let i = 0; i < verbList.length; i++) {
-		const inf = verbList[i];
-		table.push(<TableRow key={i} i={i} verb={inf} />);
+	function selectAll() {
+		const newStates = [...states].fill(true);
+		saveArray(newStates);
+		setStates(newStates);
+	}
+	function deselectAll() {
+		const newStates = [...states].fill(false);
+		saveArray(newStates);
+		setStates(newStates);
 	}
 
-	speak('');
+	function handleClick(i: number, boolean: boolean) {
+		const newStates = states;
+		newStates[i] = boolean;
+		setStates(newStates);
+	}
+
+	const table = [];
+	for (let i = 0; i < verbList.length; i++) {
+		const inf = verbList[i];
+		table.push(
+			<TableRow
+				key={i}
+				i={i}
+				verb={inf}
+				handleClick={handleClick}
+				selected={states[i]}
+			/>
+		);
+	}
 
 	return (
 		<div className="TableWrapper">
 			<div className="Header">
 				<p>Välj de verb som du vill lära in.</p>
-				{/* <button onClick={selectAll}>Markera alla</button>
-				<button onClick={deselectAll}>Avmarkera alla</button> */}
+				<button onClick={selectAll}>Markera alla</button>
+				<button onClick={deselectAll}>Avmarkera alla</button>
 			</div>
 			<table className="Table">
 				<thead>
