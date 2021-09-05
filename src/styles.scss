@@ -4,6 +4,35 @@ body {
 	margin: 0;
 }
 
+.TableWrapper {
+	margin: 0;
+	padding: 0;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.Header {
+	display: flex;
+	flex-grow: 0;
+	padding: 0;
+	margin: 0;
+	background-color: #0c0c0c18;
+	height: max-content;
+	& > button {
+		border-radius: 0;
+		border: none;
+		color: white;
+		background-color: #0c0c0c;
+		height: max-content;
+		margin: 0 1em 0 0;
+	}
+	& > p {
+		margin: 0 1em 0 0;
+		height: max-content;
+	}
+}
+
 table.Table {
 	font-size: 20px;
 	font-family: Lato;
@@ -27,10 +56,12 @@ table.Table {
 			background-color: #ffd95c;
 			color: black;
 			& > td.tableNumber {
+				width: 4ch;
 				color: #999999;
 			}
 		}
 		& > td.tableNumber {
+			width: 4ch;
 			color: #aaaaaaaa;
 		}
 	}
