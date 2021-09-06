@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"module": "commonjs",
 		"moduleResolution": "node",
-		"target": "ESNext",
+		"target": "es5",
 		"removeComments": true,
 		"allowSyntheticDefaultImports": true,
 		"jsx": "react-jsx",
