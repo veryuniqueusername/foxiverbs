@@ -5,13 +5,13 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 module.exports = {
-	entry: './src/index',
+	entry: './src/index.tsx',
 	...(process.env.production || !process.env.development
 		? {}
 		: { devtool: 'eval-source-map' }),
 
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js', 'jsx'],
+		extensions: ['.ts', '.tsx', '.js'],
 		plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
 	},
 	output: {
